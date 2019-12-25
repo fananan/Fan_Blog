@@ -1,0 +1,11 @@
+---
+title: Blogs/Articles I found Inspiring
+author: ~
+date: '2019-12-24'
+slug: blogs-articles-i-found-inspiring
+categories: []
+tags: []
+data: '2019-12-24T23:12:21-05:00'
+description: ''
+image: 'img/fall-autumn-red-season.jpg'
+---
