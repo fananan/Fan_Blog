@@ -52,5 +52,5 @@ data[~data.continents.isin(continents) & data.year.isin(years)]
 ## Debris
 1. string can't do assignment, e.g. string[0] = "1" is not doable 
 2. remember string is not mutable! string.upper() returns capitalized string, but doesn't change original string 
-3. fuck...string has method .swapcase()....
+3. string has method .swapcase()....
 4. string format: print(f"Hello {input()} {input()}! You just delved into python.")
