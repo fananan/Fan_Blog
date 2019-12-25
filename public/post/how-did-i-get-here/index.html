@@ -11,10 +11,10 @@
   <meta name="description" content="This is Fan&#39;s first blog using Yihui&#39;s Blogdown package. The blog is mainly about Fan&#39;s fun/struggling experiences in data science and her reviews about the books she found interesting."> 
   <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="How did I get here?"/>
-<meta name="twitter:description" content="These are dummy steps to create your website by using blogdown"/>
+<meta name="twitter:description" content="The simple workflow to get started with Blogdown I always want to start my own blog. I tried Medium because I really liked their simple neat interface, but the only thing it lacks of is the function to let me embed code in my article. Later I found blogdown and got excited to use it, but I almost gave up because I encounted few trivial problems. So I would like to share what I learned through this process to share my workflow based on the resources I searched along the way."/>
 
   <meta property="og:title" content="How did I get here?" />
-<meta property="og:description" content="These are dummy steps to create your website by using blogdown" />
+<meta property="og:description" content="The simple workflow to get started with Blogdown I always want to start my own blog. I tried Medium because I really liked their simple neat interface, but the only thing it lacks of is the function to let me embed code in my article. Later I found blogdown and got excited to use it, but I almost gave up because I encounted few trivial problems. So I would like to share what I learned through this process to share my workflow based on the resources I searched along the way." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/post/how-did-i-get-here/" /><meta property="article:published_time" content="2019-02-07T00:00:00&#43;00:00"/>
 <meta property="article:modified_time" content="2019-02-07T00:00:00&#43;00:00"/>
@@ -37,7 +37,7 @@ if (!doNotTrack) {
 
   
 <meta itemprop="name" content="How did I get here?">
-<meta itemprop="description" content="These are dummy steps to create your website by using blogdown">
+<meta itemprop="description" content="The simple workflow to get started with Blogdown I always want to start my own blog. I tried Medium because I really liked their simple neat interface, but the only thing it lacks of is the function to let me embed code in my article. Later I found blogdown and got excited to use it, but I almost gave up because I encounted few trivial problems. So I would like to share what I learned through this process to share my workflow based on the resources I searched along the way.">
 
 
 <meta itemprop="datePublished" content="2019-02-07T00:00:00&#43;00:00" />
@@ -46,7 +46,7 @@ if (!doNotTrack) {
 
 
 
-<meta itemprop="keywords" content="blog," />
+<meta itemprop="keywords" content="" />
 
   <link href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/5.0.0/sanitize.min.css" rel="stylesheet">
   <link href="/css/application.css" rel="stylesheet">
@@ -120,46 +120,38 @@ if (!doNotTrack) {
               2019.02.07
             </time>
             
-            <div class="c-tag">
-              
-              <a class="c-tag__item c-link" href="/tags/blog">blog</a>
-              
-            </div>
-            
           </div>
-          
-          <div class="c-thumb c-bg-img" style="background-image: url('/img/12.jpg')"></div>
           
         </header>
         <div class="c-post__body">
           
 
-<h2 id="the-simple-workflow-to-get-started-with-blogdown">The simple workflow to get started with Blogdown</h2>
 
+<div id="the-simple-workflow-to-get-started-with-blogdown" class="section level2">
+<h2>The simple workflow to get started with Blogdown</h2>
 <p>I always want to start my own blog. I tried Medium because I really liked their simple neat interface, but the only thing it lacks of is the function to let me embed code in my article. Later I found blogdown and got excited to use it, but I almost gave up because I encounted few trivial problems. So I would like to share what I learned through this process to share my workflow based on the resources I searched along the way.</p>
-
-<ol>
-<li>Create a new <strong>EMPTY</strong> project (do not use &ldquo;create website with Hugo&rdquo;, because I found out you can&rsquo;t view the website in your viewer this way).</li>
+<ol style="list-style-type: decimal">
+<li>Create a new <strong>EMPTY</strong> project (do not use “create website with Hugo”, because I found out you can’t view the website in your viewer this way).</li>
 <li>Type blogdown::new_site() in the console.</li>
-<li>Pick a them you like.
-
-<ul>
-<li>choose a simple one at first. Your contents is more important than what fancy theme you pick and it&rsquo;ll be also hard to de-bug if something goes wrong with your fancy them</li>
-<li>copy the user/repo from the <strong>top left</strong> position in github homepage and paste in &ldquo;theme=&rdquo;</li>
-</ul></li>
-<li>use <strong>update_metadata</strong> addin to refresh all your updates on your homepage (the configuration in the config.toml).</li>
-
-<li><p>use <strong>serve_site</strong> to render your post updates.</p>
-
-<ul>
-<li>the statement in the output shows the address to open your blog. For example: &lsquo;Serving the directory /Users/fanliu/Documents/Fan&rsquo;s Blog at <a href="http://127.0.0.1:5216">http://127.0.0.1:5216</a>&lsquo;</li>
-<li>this blog helps to solve the problem that I created contents in my post but it couldn&rsquo;t show up in the viewer:<a href="https://knausb.github.io/2017/06/a-first-post-using-blogdown/">https://knausb.github.io/2017/06/a-first-post-using-blogdown/</a>. I really appreciate the author to share what he experienced.</li>
-</ul></li>
-
-<li><p>To create a new post: blogdown::new_post(&ldquo;test&rdquo;, ext = getOption(&ldquo;blogdown.ext&rdquo;, &ldquo;.Rmd&rdquo;)). Use this extension argument to make it as Rmarkdown rather than default Markdown.</p></li>
+<li>Pick a them you like.</li>
 </ol>
-
+<ul>
+<li>choose a simple one at first. Your contents is more important than what fancy theme you pick and it’ll be also hard to de-bug if something goes wrong with your fancy them</li>
+<li>copy the user/repo from the <strong>top left</strong> position in github homepage and paste in “theme=”</li>
+</ul>
+<ol start="4" style="list-style-type: decimal">
+<li>use <strong>update_metadata</strong> addin to refresh all your updates on your homepage (the configuration in the config.toml).</li>
+<li>use <strong>serve_site</strong> to render your post updates.</li>
+</ol>
+<ul>
+<li>the statement in the output shows the address to open your blog. For example: ‘Serving the directory /Users/fanliu/Documents/Fan’s Blog at <a href="http://127.0.0.1:5216" class="uri">http://127.0.0.1:5216</a>’</li>
+<li>this blog helps to solve the problem that I created contents in my post but it couldn’t show up in the viewer:<a href="https://knausb.github.io/2017/06/a-first-post-using-blogdown/" class="uri">https://knausb.github.io/2017/06/a-first-post-using-blogdown/</a>. I really appreciate the author to share what he experienced.</li>
+</ul>
+<ol start="6" style="list-style-type: decimal">
+<li>To create a new post: blogdown::new_post(“test”, ext = getOption(“blogdown.ext”, “.Rmd”)). Use this extension argument to make it as Rmarkdown rather than default Markdown.</li>
+</ol>
 <p>So just use these 5 simple steps, you can create your own website! I took many detours to get here so hope this post can help you start your website much easier!</p>
+</div>
 
         </div>
 
@@ -204,11 +196,11 @@ if (!doNotTrack) {
   <ul class="c-pager__list">
     
     <li class="c-pager__list__item c-pager__list__item--prev">
-      <a class="c-link" href="/post/how-did-i-get-here/" data-toggle="tooltip" data-placement="top" title="How did I get here?">&larr; Previous Post</a>
+      <a class="c-link" href="/post/2019-02-07-how-did-i-get-here/" data-toggle="tooltip" data-placement="top" title="">&larr; Previous Post</a>
     </li>
      
     <li class="c-pager__list__item c-pager__list__item--next">
-      <a class="c-link" href="/post/workflow-for-my-daily-data-work/" data-toggle="tooltip" data-placement="top" title="Workflow for my daily data work">Next Post &rarr;</a>
+      <a class="c-link" href="/post/how-did-i-get-here/" data-toggle="tooltip" data-placement="top" title="How did I get here?">Next Post &rarr;</a>
     </li>
     
   </ul>
@@ -226,17 +218,17 @@ if (!doNotTrack) {
   "mainEntityOfPage": {
     "@type": "NewsArticle",
     "@id": "/post/how-did-i-get-here/",
-    "headline": "&lt;h2 id=&#34;the-simple-workflow-to-get-started-with-blogdown&#34;&gt;The simple workflow to get started with Blogdown&lt;/h2",
+    "headline": "&lt;div id=&#34;the-simple-workflow-to-get-started-with-blogdown&#34; class=&#34;section level2&#34;&gt;&lt;h2&gt;The simple workflow to g",
     "author": "Fan Liu",
     "publisher": {
       "@type": "Organization",
       "name": "Fan Liu",
       "logo": "//image/logo.png",
     },
-    "image": "/img/12.jpg",
+    "image": "/",
     "datePublished": "2019-02-07"
   },
-  "headline": "&lt;h2 id=&#34;the-simple-workflow-to-get-started-with-blogdown&#34;&gt;The simple workflow to get started with Blogdown&lt;/h2",
+  "headline": "&lt;div id=&#34;the-simple-workflow-to-get-started-with-blogdown&#34; class=&#34;section level2&#34;&gt;&lt;h2&gt;The simple workflow to g",
   "alternativeHeadline": "Fan in Wonderland",
   "datePublished": "2019-02-07",
   "dateModified": "2019-02-07",
@@ -251,9 +243,9 @@ if (!doNotTrack) {
     "name": "Fan Liu"
   },
   "image": "",
-  "genre": "R",
-  "keywords": "blog",
-  "description": "These are dummy steps to create your website by using blogdown"
+  
+  
+  "description": ""
 }
 </script>
 

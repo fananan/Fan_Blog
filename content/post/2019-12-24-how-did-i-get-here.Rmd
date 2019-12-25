@@ -7,7 +7,7 @@ categories: []
 tags: []
 data: '2019-02-07T22:50:57-05:00'
 description: ''
-image: 'img/pexels-photo-1363876.jpg'
+image: ''
 ---
 
 ## The simple workflow to get started with Blogdown
