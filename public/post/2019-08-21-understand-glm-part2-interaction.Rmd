@@ -1,0 +1,16 @@
+---
+title: Understand GLM -- Part2 Interaction
+author: Fan Liu
+date: '2019-08-21'
+slug: understand-glm-part2-interaction
+categories: []
+tags: []
+data: '2019-08-21T21:57:15-04:00'
+description: ''
+image: 'img/pexels-photo.jpg'
+---
+### How can we tell there's interaction between variables?
+#### P-values and Interaction plots: <https://statisticsbyjim.com/regression/interaction-effects/>
+#### start with interaction plots and then check significance by conducting stats analysis: <https://stattrek.com/multiple-regression/interaction.aspx>
+#### difference among correlation, multicollinearity and interaction
+### multicollieanrity is to define the relationship between one predictor and other predictors, to see if they have linear relationship; interaction (mostly categorical variables?) is to see two or more variables, how they influence the result together

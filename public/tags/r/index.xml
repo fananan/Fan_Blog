@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>R on Fan in Wonderland</title>
+    <link>/tags/r/</link>
+    <description>Recent content in R on Fan in Wonderland</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>all copyright of content is reserved by Fan</copyright>
+    <lastBuildDate>Thu, 18 Apr 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/r/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Understand GLM -- Part1 Assumptions</title>
+      <link>/post/understand-glm/</link>
+      <pubDate>Thu, 18 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/understand-glm/</guid>
+      <description>This series of posts are inspired by my friends Mehrnaz and Anthi during a coffee chat.
+The goal of your tech-related blogs should look like this format: http://r-statistics.co/Assumptions-of-Linear-Regression.html The first post will take you back to the basic assumptions about linear model and multicollinearity   Update on 8/19/2019: too much theoretical contents, you need some examples to illustrate your points… 1. Assumptions of Linear Model:  First thing first: why do we need to have assumptions: we don’t need them to fit least sqaured model, but violating the assumptions will make yourself more difficult in interpreting the regression results, for example, constructing a confidence interval.</description>
+    </item>
+    
+  </channel>
+</rss>

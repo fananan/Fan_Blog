@@ -1,0 +1,70 @@
+---
+title: '''How to'' List: Github'
+author: Fan 
+date: '2019-10-20'
+slug: how-to-list-github
+categories: []
+tags: 
+  - Github
+data: '2019-10-20T20:25:44-04:00'
+description: 'This is a summary list of workflows on Github'
+image: 'img/KCG1k2.jpg'
+---
+These following workflows are all based on Windows version
+
+## How to create a new repo for an existing project 
+#### 1. Go to the directory that contains the existing project
+#### 2. git init 
+#### 3. git config --global user.name "Fan"
+#### 4. git config --global user.email "fan..@.."
+#### 5. git all . (if you want to add all files from the project or you can create git add .gitignore to include files that you don't want to track)
+#### 6. git commit -m "message"
+#### 7. git remote add origin repository directory
+#### 8. ls -l (to check a list of files that will be commited to the repository)
+#### 8. git push -u origin master 
+
+
+
+
+
+## How to use Git branch:
+This assumes that you already have created remote repository. 
+
+#### 1. git clone
+#### 2. git bash the place where the file you want to track is saved
+#### 3. git branch branch-name
+#### 4. git branch (to check available branches)
+#### 5. git checkout branch-name (to switch branch)
+#### 6. git branch
+#### 7. git add . (create the file before this step)
+#### 8. git status
+#### 9. git commit -m "message"
+#### 10. git push --set-upstream origin branch-name (to create same branch on remote repository)
+* this is just used for the first time. Later on, you can just use "git push origin branch-name"
+
+The second way to create branch:
+
+#### 1. create a branch in your remote repository first
+#### 2. clone this branch 
+git clone git_url -- branch branch_name
+
+#### 3. go to R file where you want to edit the code and git bash over there
+
+
+## How to delete a file in repository:
+scoring.R is the example
+
+#### 1. git rm scoring.R
+#### 2. git commit -m "remove scoring file"
+#### 3. git push origin scoring 
+
+## How to change the current repository path
+#### 1. git remote -v (to check repository path)
+#### 2. git remote remove origin 
+#### 3. git remote add origin new-path
+#### 4. git remote -v (to check again)
+
+## How to exist the window "Please enter the commit message for your changes"
+#### 1. Type a multi-line message to move forward with the commit
+#### 2. Leave blank to abort the commit
+#### 3. Hit "esc" then type ":wq" and hit enter. Viola!

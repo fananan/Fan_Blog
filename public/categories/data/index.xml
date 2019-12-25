@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Data on Fan in Wonderland</title>
+    <link>/categories/data/</link>
+    <description>Recent content in Data on Fan in Wonderland</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>all copyright of content is reserved by Fan</copyright>
+    <lastBuildDate>Thu, 18 Apr 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/categories/data/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Workflow for my daily data work</title>
+      <link>/post/workflow-for-my-daily-data-work/</link>
+      <pubDate>Thu, 18 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/workflow-for-my-daily-data-work/</guid>
+      <description>Need to fix markdown to Rmarkdown, otherwise you can’t write R code here…. okay, use this package DiagrammeR to draw flowcharts in R: https://datascienceplus.com/how-to-build-a-simple-flowchart-with-r-diagrammer-package/ new data –&amp;gt; identify key variables and check duplication (if pass) —&amp;gt; do pre-process (if not pass) —&amp;gt; pick a sample of dataset/examples to see what cause duplication
+before presenting to others, take a short coffee break and come back to check the final data again with fresh eyes.</description>
+    </item>
+    
+  </channel>
+</rss>

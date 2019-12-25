@@ -1,0 +1,43 @@
+baseurl = "/"
+languageCode = "en"
+title = "Fan in Wonderland"
+copyright = "all copyright of content is reserved by Fan"
+paginate = 3
+
+googleAnalytics = "Yout Google Analytics ID"
+
+theme = "minimage"
+
+[params]
+  description = "This is Fan's first blog using Yihui's Blogdown package. The blog is mainly about Fan's fun/struggling experiences in data science and her reviews about the books she found interesting."
+  author = "Fan Liu"
+  logo = '/image/logo.png'
+
+[taxonomies]
+  category = "categories"
+  tag = "tags"
+
+[[menu.global]]
+    name = "test1"
+    url = "/categories/Development/"
+
+[[menu.global]]
+    name = "test2"
+    url = "/categories/golang/"
+
+[[menu.footer]]
+    name = "About"
+    url = "/page/about/"
+
+
+[[menu.footer]]
+    name = "GitHub"
+    url = "https://github.com/fananan"
+[[menu.footer]]
+    name = "Twitter"
+    url = "https://twitter.com/fanananliu"  
+
+[sitemap]
+  changefreq = "monthly"
+  priority = 0.5
+  filename = "sitemap.xml"

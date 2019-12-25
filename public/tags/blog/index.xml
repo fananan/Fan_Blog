@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Blog on Fan in Wonderland</title>
+    <link>/tags/blog/</link>
+    <description>Recent content in Blog on Fan in Wonderland</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>all copyright of content is reserved by Fan</copyright>
+    <lastBuildDate>Thu, 07 Feb 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/blog/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>How did I get here?</title>
+      <link>/post/how-did-i-get-here/</link>
+      <pubDate>Thu, 07 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/how-did-i-get-here/</guid>
+      <description>The simple workflow to get started with Blogdown I always want to start my own blog. I tried Medium because I really liked their simple neat interface, but the only thing it lacks of is the function to let me embed code in my article. Later I found blogdown and got excited to use it, but I almost gave up because I encounted few trivial problems. So I would like to share what I learned through this process to share my workflow based on the resources I searched along the way.</description>
+    </item>
+    
+  </channel>
+</rss>

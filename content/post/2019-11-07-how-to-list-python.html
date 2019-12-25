@@ -1,0 +1,61 @@
+---
+title: '''How to'' List: Python'
+author: "null"
+date: '2019-11-07'
+data: '2019-11-07T21:54:06-05:00'
+description: ''
+image: 'img/P8135669.jpg'
+slug: how-to-list-python
+tags: []
+categories: []
+---
+
+
+
+<div id="how-to-filter-data-frame-by-values-of-column-reference-httpscmdlinetips.com201802how-to-subset-pandas-dataframe-based-on-values-of-a-column" class="section level2">
+<h2>How to filter data frame by values of column (reference: <a href="https://cmdlinetips.com/2018/02/how-to-subset-pandas-dataframe-based-on-values-of-a-column/" class="uri">https://cmdlinetips.com/2018/02/how-to-subset-pandas-dataframe-based-on-values-of-a-column/</a>):</h2>
+<div id="filter-rows-for-year-2002-using-the-boolean-expression" class="section level4">
+<h4>filter rows for year 2002 using the boolean expression:</h4>
+<p>data_2002 = data[data[‘year’] == 2002]</p>
+<p>data_2002 = data[data.year === 2002] # . this is called Pandas chaining</p>
+</div>
+<div id="select-rows-whose-column-value-is-not-nanan" class="section level4">
+<h4>select rows whose column value is not NA/NAN:</h4>
+<p>data_no_NA = data[data.year.notnull()]</p>
+</div>
+<div id="select-rows-based-on-a-list" class="section level4">
+<h4>select rows based on a list:</h4>
+<p>years = [1992, 1990]</p>
+<p>data.year.isin(years) # this is boolean expression</p>
+<p>data_years = data[data.year.isin(years)]</p>
+</div>
+<div id="select-rows-based-on-values-not-in-a-list" class="section level4">
+<h4>select rows based on values not in a list</h4>
+<p>continents = [‘Aisa’, ‘Africa’, ‘America’, ’Europe]</p>
+<p>data_Ocean = data[~data.continent.isin(continents)]</p>
+</div>
+<div id="select-rows-using-multiple-conditions" class="section level4">
+<h4>select rows using multiple conditions:</h4>
+<p>data[~data.continents.isin(continents) &amp; data.year.isin(years)]</p>
+</div>
+</div>
+<div id="how-to-export-file-in-json-format-in-python" class="section level2">
+<h2>How to export file in JSON format in Python:</h2>
+<div id="import-json" class="section level4">
+<h4>import json</h4>
+<ol style="list-style-type: decimal">
+<li>data_json &lt;- data.to_json()</li>
+<li>data_json_list &lt;- data_json.loads() ## to convert string to a list</li>
+<li>with open(“path_name and target file name.json”) as data_file: data_file = data_json_list.dump()</li>
+</ol>
+</div>
+</div>
+<div id="debris" class="section level2">
+<h2>Debris</h2>
+<ol style="list-style-type: decimal">
+<li>string can’t do assignment, e.g. string[0] = “1” is not doable</li>
+<li>remember string is not mutable! string.upper() returns capitalized string, but doesn’t change original string</li>
+<li>fuck…string has method .swapcase()….</li>
+<li>string format: print(f“Hello {input()} {input()}! You just delved into python.”)</li>
+</ol>
+</div>

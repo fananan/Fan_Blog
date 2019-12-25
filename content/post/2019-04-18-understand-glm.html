@@ -1,0 +1,94 @@
+---
+title: Understand GLM -- Part1 Assumptions
+author: Fan Liu
+date: '2019-04-18'
+slug: understand-glm
+categories:
+  - GLM
+  - R
+tags:
+  - GLM
+  - R
+  - regression
+data: '2019-04-18T21:49:01-04:00'
+description: 'This is series of blogs about me trying to understand GLM inside and out'
+image: 'img/rainbow.jpg'
+---
+
+
+
+<p>This series of posts are inspired by my friends Mehrnaz and Anthi during a coffee chat.</p>
+<div id="the-goal-of-your-tech-related-blogs-should-look-like-this-format-httpr-statistics.coassumptions-of-linear-regression.html" class="section level4">
+<h4>The goal of your tech-related blogs should look like this format: <a href="http://r-statistics.co/Assumptions-of-Linear-Regression.html" class="uri">http://r-statistics.co/Assumptions-of-Linear-Regression.html</a></h4>
+<div id="the-first-post-will-take-you-back-to-the-basic-assumptions-about-linear-model-and-multicollinearity" class="section level5">
+<h5>The first post will take you back to the basic assumptions about linear model and multicollinearity</h5>
+</div>
+</div>
+<div id="update-on-8192019-too-much-theoretical-contents-you-need-some-examples-to-illustrate-your-points" class="section level4">
+<h4>Update on 8/19/2019: too much theoretical contents, you need some examples to illustrate your points…</h4>
+<div id="assumptions-of-linear-model" class="section level5">
+<h5>1. Assumptions of Linear Model:</h5>
+</div>
+<div id="first-thing-first-why-do-we-need-to-have-assumptions-we-dont-need-them-to-fit-least-sqaured-model-but-violating-the-assumptions-will-make-yourself-more-difficult-in-interpreting-the-regression-results-for-example-constructing-a-confidence-interval." class="section level5">
+<h5>First thing first: why do we need to have assumptions: we don’t need them to fit least sqaured model, but violating the assumptions will make yourself more difficult in interpreting the regression results, for example, constructing a confidence interval.</h5>
+<ul>
+<li>relationship between the independent and dependent variables should be linear. it is also important to check for outliers since linear regression is sensitive to outlier effect. The linearity assumption can be tested through scatter plots.
+<ul>
+<li><strong>Pay Attention</strong>: Y=a+(β1_X1)+(β2_X2^2) is also linear regression model, even X2 is raised to power 2. Linear in “parameters”.</li>
+</ul></li>
+<li>Independence of residuals error term. there is little or no autocorrelation in the data. Autocorrelation occurs when residuals are not independent from each other.
+<ul>
+<li>Difference between <strong>statistical error</strong> and <strong>residual</strong>: statistical error is the deviation of observed values from <em>TRUE</em> population mean which is unobservable; residual is the deviation of oberved values from <em>ESTIMATED</em> sample mean which could serve as a good estimator of the population mean. So the sum of residuals in a random sample is necessarily zero, and thus residuals are necessarily <em>not independen</em>; The statistical error, on the other hand, are independent, but their sum in a random sample is almost surely not zero.</li>
+<li>This distinction is important when it comes to calculate <strong>Mean Sqaured Error</strong>. The MSE is calculated from sum of squared residuals, not unbservable error. When we divide it by n, the number of observations, it’s MSE. But this is biased estimate of unobserved error. The bias is removed by dividing sum of squaured residuals by df=n-p-1 (n is the number of observations, p is number of parameters).</li>
+</ul></li>
+<li>Normality of residuals. requires all variables to be multivariate normal. This assumption can be best checked with Q-Q plot. Normality can be checked with a goodness of fit test: Kolmogorov-smirnov test. When data is not normally distributed a non-linear transformation (e.g. log, square, cubic) might fix the issue. (what is Q-Q plot: quantile-quantile, a point on the plot corresponds to one of the quantiles of the second distribution plotted against the same quantile of the first distribution. if the two distibutions being compared similar, the points in Q-Q plot will approximately lie on the line y=x)
+<ul>
+<li>try to understand Q-Q plot first:If the two distributions being compared are identical, the Q–Q plot follows the 45° line y = x. If the two distributions agree after linearly transforming the values in one of the distributions, then the Q–Q plot follows some line, but not necessarily the line y = x. If the general trend of the Q–Q plot is flatter than the line y = x, the distribution plotted on the horizontal axis is more dispersed than the distribution plotted on the vertical axis. Conversely, if the general trend of the Q–Q plot is steeper than the line y = x, the distribution plotted on the vertical axis is more dispersed than the distribution plotted on the horizontal axis.
+<ul>
+<li>dispersed: bigger standard deviation/variance, in other words, it’s fatter and longer <!--- ![dispersion](/Users/fanliu/Documents/Fan's Blog/public/img/dispersion.jpg)--></li>
+<li>get sample data here and plot Q-Q plot to understand “S” shaped Q-Q plot in R in R</li>
+</ul></li>
+</ul></li>
+</ul>
+<p>how to identify multicollinearity? VIF? variance inflation factor bad effects multicollinearity brings for the results how to fix it</p>
+</div>
+<div id="about-multicollinearity" class="section level5">
+<h5>2. About Multicollinearity:</h5>
+</div>
+<div id="two-things-i-learned-from-the-website-httpsnewonlinecourses.science.psu.edustat501node346" class="section level5">
+<h5>Two things I learned from the website: <a href="https://newonlinecourses.science.psu.edu/stat501/node/346/" class="uri">https://newonlinecourses.science.psu.edu/stat501/node/346/</a>:</h5>
+<ul>
+<li>When there are two highly-correlate variables A and B. The coefficients of putting them separately are definitely larger than the ones when you put them two together in the model, because the former one indicates when you increase A, B increases too, which increases the response more; but the latter means, when you fix the value of one of them, and you increase the other,then the response won’t increase that much as the first situation.</li>
+<li>About ESS: explained sum of squares. “The amazing thing is that even predictors that are not included in the model, but are highly correlated with the predictors in our model, can have an impact! … The moral of the story is that if you get estimated coefficients that just don’t make sense, there is probably a very good explanation. Rather than stopping your research and running off to report your unusual results, think long and hard about what might have caused the results. That is, think about the system you are studying and all of the extraneous variables that could influence the system.”
+<ul>
+<li>Example shown from this website: For example, consider a pharmaceutical company’s regression of territory sales on territory population and per capita income. One would, of course, expect that as the population of the territory increases, so would the sales in the territory. But, contrary to this expectation, the pharmaceutical company’s regression analysis deemed the estimated coefficient of territory population to be negative. That is, as the population of territory increases, the territory sales were predicted to decrease. After further investigation, the pharmaceutical company determined that the larger the territory, the larger too the competitor’s market penetration. That is, the competitor kept the sales down in territories with large populations.</li>
+<li><strong>Your own conclusion</strong>: that’s why business mindset and domain knowledge is important. Since you could have an idea to explain things that look weird from data results from the first sight</li>
+<li>it’s really helpful to refresh my understanding about RSS, ESS and TSS. TSS = RSS + ESS. Larger ESS, better the model fits. ESS measures how far regression line away from the average line. Intuitively, you can think if ESS too close to average line, then this model is useless, since you could just use average line to “predict” rather than build a regression model.
+<ol style="list-style-type: lower-roman">
+<li>Another interesing fact about R squre. R^2 is the ratio of ESS. When it’s just simple regression (with only one predictor), R^2 is equal to r^2. r is correlation value between Y and X. But this doesn’t work for multilinear regression, since correlation only measure the relationship between two variables.</li>
+</ol></li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="update-on-1052019-learned-from-jun" class="section level4">
+<h4>Update on 10/5/2019: learned from Jun</h4>
+<div id="glm-can-only-use-maximum-likelihood-but-linear-regression-can-use-both-maximum-likelihood-and-mean-square-error." class="section level5">
+<h5>GLM can only use maximum likelihood, but linear regression can use both maximum likelihood and mean square error.</h5>
+</div>
+</div>
+<div id="the-ultimate-goal-of-max-likelihood-is-to-find-an-optimal-way-to-find-the-distribution-of-the-data.-likelihood-is-you-know-the-data-first-and-then-find-its-corresponding-distribution.-likelihood-formula-is-distribution-formula-its-just-to-use-distribution-formula-and-multiplies-together-using-all-data-points.-how-to-get-maximum-likelihood-is-to-get-derivative.-for-example-maximum-likelihood-of-normal-distribution-take-log-first-since-it-has-exponential-in-it-before-taking-derivatives.-mle-is-the-short-name-for-maximum-likelihood." class="section level4">
+<h4>The ultimate goal of max likelihood is to find an optimal way to find the distribution of the data. Likelihood is you know the data first and then find its corresponding distribution. Likelihood formula IS distribution formula, it’s just to use distribution formula and multiplies together using all data points. How to get maximum likelihood is to get derivative. For example, maximum likelihood of normal distribution, take log first (since it has exponential in it) before taking derivatives. MLE is the short name for maximum likelihood.</h4>
+<div id="if-actual-observations-hence-errors-are-following-normal-distribution-around-the-mean-then-mle-ols-ols---minimize-error---maximize-likelihood---mle-from-the-formula" class="section level6">
+<h6>if actual observations (hence errors) are following normal distribution around the mean, then MLE = OLS (OLS -&gt; minimize error -&gt; maximize likelihood -&gt; MLE from the formula)</h6>
+</div>
+</div>
+<div id="how-to-derive-log-likelihood-formula" class="section level4">
+<h4>how to derive log likelihood formula</h4>
+<div id="variance-more-precisely-rss-residual-sum-of-square-and-deviance" class="section level5">
+<h5>‘variance’ (more precisely, RSS: residual sum of square) and deviance</h5>
+</div>
+<div id="deviance-this-expression-is-simply-2-times-the-log-likelihood-ratio-of-the-full-model-compared-to-the-reduced-model.-the-deviance-is-used-to-compare-two-models-in-particular-in-the-case-of-generalized-linear-models-glm-where-it-has-a-similar-role-to-residual-variance-from-anova-in-linear-models-rss." class="section level5">
+<h5>Deviance: This expression is simply 2 times the log-likelihood ratio of the full model compared to the reduced model. The deviance is used to compare two models – in particular in the case of generalized linear models (GLM) where it has a similar role to residual variance from ANOVA in linear models (RSS).</h5>
+</div>
+</div>

@@ -1,0 +1,56 @@
+---
+title: '''How to'' List: Python'
+author: "null"
+date: '2019-11-07'
+data: '2019-11-07T21:54:06-05:00'
+description: ''
+image: 'img/P8135669.jpg'
+slug: how-to-list-python
+tags: []
+categories: []
+---
+```{r setup, include=FALSE}
+# install.packages("reticulate")
+library(reticulate)
+use_python("/usr/bin/python")
+# actually, there's no need to write code here...currently, it's just summary, not 
+```
+
+
+
+## How to filter data frame by values of column (reference: <https://cmdlinetips.com/2018/02/how-to-subset-pandas-dataframe-based-on-values-of-a-column/>):
+#### filter rows for year 2002 using the boolean expression:
+data_2002 = data[data['year'] == 2002]
+
+data_2002 = data[data.year === 2002] # . this is called Pandas chaining
+
+#### select rows whose column value is not NA/NAN:
+data_no_NA = data[data.year.notnull()]
+
+#### select rows based on a list:
+years = [1992, 1990]
+
+data.year.isin(years) # this is boolean expression
+
+data_years = data[data.year.isin(years)]
+
+#### select rows based on values not in a list
+continents = ['Aisa', 'Africa', 'America', 'Europe]
+
+data_Ocean = data[~data.continent.isin(continents)]
+
+#### select rows using multiple conditions:
+data[~data.continents.isin(continents) & data.year.isin(years)]
+
+## How to export file in JSON format in Python:
+#### import json
+1. data_json <- data.to_json()
+2. data_json_list <- data_json.loads() ## to convert string to a list
+3. with open("path_name and target file name.json") as data_file:
+  data_file = data_json_list.dump()
+
+## Debris
+1. string can't do assignment, e.g. string[0] = "1" is not doable 
+2. remember string is not mutable! string.upper() returns capitalized string, but doesn't change original string 
+3. fuck...string has method .swapcase()....
+4. string format: print(f"Hello {input()} {input()}! You just delved into python.")

@@ -1,0 +1,77 @@
+---
+title: '''How to'' List: R'
+author: ~
+date: '2019-10-20'
+slug: how-to-list-r
+categories: []
+tags: []
+data: '2019-10-20T22:45:33-04:00'
+description: ''
+image: 'img/RStudio.jpg'
+---
+
+## How to drop columns by column names:
+```{r}
+df <- data.frame(a = 1:2, b = 1:2)
+new_data = subset(df, select=-a) # no need to quote columns names
+```
+
+## How to find columns where there are missing values:
+```{r}
+data <- data.frame(a = c(NA, 2), b = c(2, 3), c = c(4,5),
+                   d = c(NA, 3))
+colnames(data)[colSums(is.na(data)) > 0]
+# break it down: first part "colnames(data)" is the object you want; second part in "[]" serves as condition 
+
+# similar logic can also be applied to see which row contains missing values in a dataset
+data$row_num = seq_len(nrow(data))
+data$row_num[rowSums(is.na(data)) > 0]
+```
+
+
+## How to slice your data frame: ([simplifying and preserving](http://adv-r.had.co.nz/Subsetting.html))
+```{r eval = TRUE}
+df <- data.frame(a = 1:2, b = 1:2)
+# simplifying: returns the simplies possible data type structure (char, num...) that can represent the output.
+class(df[["a"]])
+class(df[,1])
+# preserving: keeps the structure of the output the same as the input, and is generally better for programming, because the result will always be the same type.
+class(df[1])
+class(df[,1,drop=FALSE])
+```
+
+## How to check which columns are numeric in a dataset:
+```{r}
+# first: you need to understand the difference between apply() and sapply()
+d1 = data.frame(x=numeric(10), y=numeric(10))
+d2 = data.frame(d1, z=character(10))
+
+apply(d1, 2, is.numeric)
+apply(d1, 2, function(x) is.numeric(x))
+sapply(d1, is.numeric)
+
+apply(d2, 2, is.numeric)
+sapply(d2, is.numeric)
+# if any of the columns in your dataframe is not numeric, apply will try to coerce all of them to the least common supertype, and you'll get FALSE
+# Conclusion: to tell which columns are numeric/charater, use sapply rather then apply
+```
+
+## How to change certain levels of values in a column:
+```{r}
+ind<-rep(1:4,each=24)
+hour<-rep(seq(0,23,by=1),4)
+depth<-runif(length(ind),1,50)
+df<-data.frame(cbind(ind,hour,depth))
+df$depth<-as.numeric(df$depth)
+head(df, 5)
+# reassign depth values under 10 to zero
+df$depth[df$depth<10] <- 0
+head(df, 5)
+```
+
+## How to slice rows where columns meet certain criteria:
+```{r}
+data <- data.frame(a = c(1, 3, 5), b = c(2, 4, 6), c = c("a", "b", "c"))
+data$a[data$c %in% c("a", "c")]
+# data$c == c("a", "c") doesn't work, since if it's a vector or list, you have to use %in%
+```

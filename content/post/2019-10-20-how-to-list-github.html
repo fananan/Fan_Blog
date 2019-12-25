@@ -1,0 +1,134 @@
+---
+title: '''How to'' List: Github'
+author: Fan 
+date: '2019-10-20'
+slug: how-to-list-github
+categories: []
+tags: 
+  - Github
+data: '2019-10-20T20:25:44-04:00'
+description: 'This is a summary list of workflows on Github'
+image: 'img/KCG1k2.jpg'
+---
+
+
+
+<p>These following workflows are all based on Windows version</p>
+<div id="how-to-create-a-new-repo-for-an-existing-project" class="section level2">
+<h2>How to create a new repo for an existing project</h2>
+<div id="go-to-the-directory-that-contains-the-existing-project" class="section level4">
+<h4>1. Go to the directory that contains the existing project</h4>
+</div>
+<div id="git-init" class="section level4">
+<h4>2. git init</h4>
+</div>
+<div id="git-config-global-user.name-fan" class="section level4">
+<h4>3. git config –global user.name “Fan”</h4>
+</div>
+<div id="git-config-global-user.email-fan...." class="section level4">
+<h4>4. git config –global user.email “fan..@..”</h4>
+</div>
+<div id="git-all-.-if-you-want-to-add-all-files-from-the-project-or-you-can-create-git-add-.gitignore-to-include-files-that-you-dont-want-to-track" class="section level4">
+<h4>5. git all . (if you want to add all files from the project or you can create git add .gitignore to include files that you don’t want to track)</h4>
+</div>
+<div id="git-commit--m-message" class="section level4">
+<h4>6. git commit -m “message”</h4>
+</div>
+<div id="git-remote-add-origin-repository-directory" class="section level4">
+<h4>7. git remote add origin repository directory</h4>
+</div>
+<div id="ls--l-to-check-a-list-of-files-that-will-be-commited-to-the-repository" class="section level4">
+<h4>8. ls -l (to check a list of files that will be commited to the repository)</h4>
+</div>
+<div id="git-push--u-origin-master" class="section level4">
+<h4>8. git push -u origin master</h4>
+</div>
+</div>
+<div id="how-to-use-git-branch" class="section level2">
+<h2>How to use Git branch:</h2>
+<p>This assumes that you already have created remote repository.</p>
+<div id="git-clone" class="section level4">
+<h4>1. git clone</h4>
+</div>
+<div id="git-bash-the-place-where-the-file-you-want-to-track-is-saved" class="section level4">
+<h4>2. git bash the place where the file you want to track is saved</h4>
+</div>
+<div id="git-branch-branch-name" class="section level4">
+<h4>3. git branch branch-name</h4>
+</div>
+<div id="git-branch-to-check-available-branches" class="section level4">
+<h4>4. git branch (to check available branches)</h4>
+</div>
+<div id="git-checkout-branch-name-to-switch-branch" class="section level4">
+<h4>5. git checkout branch-name (to switch branch)</h4>
+</div>
+<div id="git-branch" class="section level4">
+<h4>6. git branch</h4>
+</div>
+<div id="git-add-.-create-the-file-before-this-step" class="section level4">
+<h4>7. git add . (create the file before this step)</h4>
+</div>
+<div id="git-status" class="section level4">
+<h4>8. git status</h4>
+</div>
+<div id="git-commit--m-message-1" class="section level4">
+<h4>9. git commit -m “message”</h4>
+</div>
+<div id="git-push-set-upstream-origin-branch-name-to-create-same-branch-on-remote-repository" class="section level4">
+<h4>10. git push –set-upstream origin branch-name (to create same branch on remote repository)</h4>
+<ul>
+<li>this is just used for the first time. Later on, you can just use “git push origin branch-name”</li>
+</ul>
+<p>The second way to create branch:</p>
+</div>
+<div id="create-a-branch-in-your-remote-repository-first" class="section level4">
+<h4>1. create a branch in your remote repository first</h4>
+</div>
+<div id="clone-this-branch" class="section level4">
+<h4>2. clone this branch</h4>
+<p>git clone git_url – branch branch_name</p>
+</div>
+<div id="go-to-r-file-where-you-want-to-edit-the-code-and-git-bash-over-there" class="section level4">
+<h4>3. go to R file where you want to edit the code and git bash over there</h4>
+</div>
+</div>
+<div id="how-to-delete-a-file-in-repository" class="section level2">
+<h2>How to delete a file in repository:</h2>
+<p>scoring.R is the example</p>
+<div id="git-rm-scoring.r" class="section level4">
+<h4>1. git rm scoring.R</h4>
+</div>
+<div id="git-commit--m-remove-scoring-file" class="section level4">
+<h4>2. git commit -m “remove scoring file”</h4>
+</div>
+<div id="git-push-origin-scoring" class="section level4">
+<h4>3. git push origin scoring</h4>
+</div>
+</div>
+<div id="how-to-change-the-current-repository-path" class="section level2">
+<h2>How to change the current repository path</h2>
+<div id="git-remote--v-to-check-repository-path" class="section level4">
+<h4>1. git remote -v (to check repository path)</h4>
+</div>
+<div id="git-remote-remove-origin" class="section level4">
+<h4>2. git remote remove origin</h4>
+</div>
+<div id="git-remote-add-origin-new-path" class="section level4">
+<h4>3. git remote add origin new-path</h4>
+</div>
+<div id="git-remote--v-to-check-again" class="section level4">
+<h4>4. git remote -v (to check again)</h4>
+</div>
+</div>
+<div id="how-to-exist-the-window-please-enter-the-commit-message-for-your-changes" class="section level2">
+<h2>How to exist the window “Please enter the commit message for your changes”</h2>
+<div id="type-a-multi-line-message-to-move-forward-with-the-commit" class="section level4">
+<h4>1. Type a multi-line message to move forward with the commit</h4>
+</div>
+<div id="leave-blank-to-abort-the-commit" class="section level4">
+<h4>2. Leave blank to abort the commit</h4>
+</div>
+<div id="hit-esc-then-type-wq-and-hit-enter.-viola" class="section level4">
+<h4>3. Hit “esc” then type “:wq” and hit enter. Viola!</h4>
+</div>
+</div>

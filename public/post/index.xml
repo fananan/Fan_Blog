@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Fan in Wonderland</title>
+    <link>/post/</link>
+    <description>Recent content in Posts on Fan in Wonderland</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>all copyright of content is reserved by Fan</copyright>
+    <lastBuildDate>Sun, 22 Dec 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Curiosity on Data</title>
+      <link>/post/curiosity-on-data/</link>
+      <pubDate>Sun, 22 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/curiosity-on-data/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>&#39;How to&#39; List: Python</title>
+      <link>/post/how-to-list-python/</link>
+      <pubDate>Thu, 07 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/how-to-list-python/</guid>
+      <description>How to filter data frame by values of column (reference: https://cmdlinetips.com/2018/02/how-to-subset-pandas-dataframe-based-on-values-of-a-column/): filter rows for year 2002 using the boolean expression: data_2002 = data[data[‘year’] == 2002]
+data_2002 = data[data.year === 2002] # . this is called Pandas chaining
+ select rows whose column value is not NA/NAN: data_no_NA = data[data.year.notnull()]
+ select rows based on a list: years = [1992, 1990]
+data.year.isin(years) # this is boolean expression
+data_years = data[data.year.isin(years)]</description>
+    </item>
+    
+    <item>
+      <title>&#39;How to&#39; List: Github</title>
+      <link>/post/how-to-list-github/</link>
+      <pubDate>Sun, 20 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/how-to-list-github/</guid>
+      <description>These following workflows are all based on Windows version
+How to create a new repo for an existing project 1. Go to the directory that contains the existing project  2. git init  3. git config –global user.name “Fan”  4. git config –global user.email “fan..@..”  5. git all . (if you want to add all files from the project or you can create git add .gitignore to include files that you don’t want to track)  6.</description>
+    </item>
+    
+    <item>
+      <title>&#39;How to&#39; List: R</title>
+      <link>/post/how-to-list-r/</link>
+      <pubDate>Sun, 20 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/how-to-list-r/</guid>
+      <description>How to drop columns by column names: df &amp;lt;- data.frame(a = 1:2, b = 1:2) new_data = subset(df, select=-a) # no need to quote columns names  How to find columns where there are missing values: data &amp;lt;- data.frame(a = c(NA, 2), b = c(2, 3), c = c(4,5), d = c(NA, 3)) colnames(data)[colSums(is.na(data)) &amp;gt; 0] ## [1] &amp;quot;a&amp;quot; &amp;quot;d&amp;quot; # break it down: first part &amp;quot;colnames(data)&amp;quot; is the object you want; second part in &amp;quot;[]&amp;quot; serves as condition # similar logic can also be applied to see which row contains missing values in a dataset data$row_num = seq_len(nrow(data)) data$row_num[rowSums(is.</description>
+    </item>
+    
+    <item>
+      <title>Understand GLM -- Part2 Interaction</title>
+      <link>/post/understand-glm-part2-interaction/</link>
+      <pubDate>Wed, 21 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/understand-glm-part2-interaction/</guid>
+      <description> How can we tell there’s interaction between variables? P-values and Interaction plots: https://statisticsbyjim.com/regression/interaction-effects/  start with interaction plots and then check significance by conducting stats analysis: https://stattrek.com/multiple-regression/interaction.aspx  difference among correlation, multicollinearity and interaction   multicollieanrity is to define the relationship between one predictor and other predictors, to see if they have linear relationship; interaction (mostly categorical variables?) is to see two or more variables, how they influence the result together  </description>
+    </item>
+    
+    <item>
+      <title>Understand GLM -- Part1 Assumptions</title>
+      <link>/post/understand-glm/</link>
+      <pubDate>Thu, 18 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/understand-glm/</guid>
+      <description>This series of posts are inspired by my friends Mehrnaz and Anthi during a coffee chat.
+The goal of your tech-related blogs should look like this format: http://r-statistics.co/Assumptions-of-Linear-Regression.html The first post will take you back to the basic assumptions about linear model and multicollinearity   Update on 8/19/2019: too much theoretical contents, you need some examples to illustrate your points… 1. Assumptions of Linear Model:  First thing first: why do we need to have assumptions: we don’t need them to fit least sqaured model, but violating the assumptions will make yourself more difficult in interpreting the regression results, for example, constructing a confidence interval.</description>
+    </item>
+    
+    <item>
+      <title>Workflow for my daily data work</title>
+      <link>/post/workflow-for-my-daily-data-work/</link>
+      <pubDate>Thu, 18 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/workflow-for-my-daily-data-work/</guid>
+      <description>Need to fix markdown to Rmarkdown, otherwise you can’t write R code here…. okay, use this package DiagrammeR to draw flowcharts in R: https://datascienceplus.com/how-to-build-a-simple-flowchart-with-r-diagrammer-package/ new data –&amp;gt; identify key variables and check duplication (if pass) —&amp;gt; do pre-process (if not pass) —&amp;gt; pick a sample of dataset/examples to see what cause duplication
+before presenting to others, take a short coffee break and come back to check the final data again with fresh eyes.</description>
+    </item>
+    
+    <item>
+      <title>How did I get here?</title>
+      <link>/post/how-did-i-get-here/</link>
+      <pubDate>Thu, 07 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/how-did-i-get-here/</guid>
+      <description>The simple workflow to get started with Blogdown I always want to start my own blog. I tried Medium because I really liked their simple neat interface, but the only thing it lacks of is the function to let me embed code in my article. Later I found blogdown and got excited to use it, but I almost gave up because I encounted few trivial problems. So I would like to share what I learned through this process to share my workflow based on the resources I searched along the way.</description>
+    </item>
+    
+    <item>
+      <title>Hello R Markdown</title>
+      <link>/post/2015-07-23-r-rmarkdown/</link>
+      <pubDate>Thu, 23 Jul 2015 21:13:14 -0500</pubDate>
+      
+      <guid>/post/2015-07-23-r-rmarkdown/</guid>
+      <description>R Markdown This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see http://rmarkdown.rstudio.com.
+You can embed an R code chunk like this:
+summary(cars) ## speed dist ## Min. : 4.0 Min. : 2.00 ## 1st Qu.:12.0 1st Qu.: 26.00 ## Median :15.0 Median : 36.00 ## Mean :15.4 Mean : 42.98 ## 3rd Qu.</description>
+    </item>
+    
+  </channel>
+</rss>

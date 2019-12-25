@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+  <title>Understand GLM -- Part1 Assumptions &middot; Fan in Wonderland - This is Fan&#39;s first blog using Yihui&#39;s Blogdown package. The blog is mainly about Fan&#39;s fun/struggling experiences in data science and her reviews about the books she found interesting.</title>
+  <meta name="generator" content="Hugo 0.53" />
+  
+  <meta name="description" content="This is Fan&#39;s first blog using Yihui&#39;s Blogdown package. The blog is mainly about Fan&#39;s fun/struggling experiences in data science and her reviews about the books she found interesting."> 
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Understand GLM -- Part1 Assumptions"/>
+<meta name="twitter:description" content="This is series of blogs about me trying to understand GLM inside and out"/>
+
+  <meta property="og:title" content="Understand GLM -- Part1 Assumptions" />
+<meta property="og:description" content="This is series of blogs about me trying to understand GLM inside and out" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/understand-glm/" /><meta property="article:published_time" content="2019-04-18T00:00:00&#43;00:00"/>
+<meta property="article:modified_time" content="2019-04-18T00:00:00&#43;00:00"/>
+
+  <!-- RSS autodiscovery -->
+  
+  
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'Yout Google Analytics ID', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+  
+<meta itemprop="name" content="Understand GLM -- Part1 Assumptions">
+<meta itemprop="description" content="This is series of blogs about me trying to understand GLM inside and out">
+
+
+<meta itemprop="datePublished" content="2019-04-18T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2019-04-18T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="1247">
+
+
+
+<meta itemprop="keywords" content="GLM,R,regression," />
+
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/5.0.0/sanitize.min.css" rel="stylesheet">
+  <link href="/css/application.css" rel="stylesheet">
+</head>
+
+
+<body>
+  <header class="c-global-header">
+  <div class="c-container c-container--medium">
+    <div class="c-global-header__inner">
+      <div class="c-global-header__primary">
+        <h1 class="c-brand">
+          <a href="/">Fan in Wonderland</a>
+        </h1>
+        <p class="c-description">This is Fan&#39;s first blog using Yihui&#39;s Blogdown package. The blog is mainly about Fan&#39;s fun/struggling experiences in data science and her reviews about the books she found interesting.</p>
+      </div>
+      <div class="c-global-header__utility">
+        <button type="button" class="c-menu">
+          <svg class="icon icon-menu">
+            <use xlink:href="#icon-menu"></use>
+            <symbol id="icon-menu" viewBox="0 0 32 32">
+              <title>menu</title>
+              <path d="M2 6h28v6h-28zM2 14h28v6h-28zM2 22h28v6h-28z"></path>
+            </symbol>
+          </svg>
+        </button>
+      </div>
+      <div class="c-overlay">
+  <div class="c-container">
+    <nav class="c-global-nav">
+      <div class="c-global-nav__closer">
+        <svg class="icon icon-cross">
+          <use xlink:href="#icon-cross"></use>
+          <symbol id="icon-cross" viewBox="0 0 32 32">
+            <title>cross</title>
+            <path d="M31.708 25.708c-0-0-0-0-0-0l-9.708-9.708 9.708-9.708c0-0 0-0 0-0 0.105-0.105 0.18-0.227 0.229-0.357 0.133-0.356 0.057-0.771-0.229-1.057l-4.586-4.586c-0.286-0.286-0.702-0.361-1.057-0.229-0.13 0.048-0.252 0.124-0.357 0.228 0 0-0 0-0 0l-9.708 9.708-9.708-9.708c-0-0-0-0-0-0-0.105-0.104-0.227-0.18-0.357-0.228-0.356-0.133-0.771-0.057-1.057 0.229l-4.586 4.586c-0.286 0.286-0.361 0.702-0.229 1.057 0.049 0.13 0.124 0.252 0.229 0.357 0 0 0 0 0 0l9.708 9.708-9.708 9.708c-0 0-0 0-0 0-0.104 0.105-0.18 0.227-0.229 0.357-0.133 0.355-0.057 0.771 0.229 1.057l4.586 4.586c0.286 0.286 0.702 0.361 1.057 0.229 0.13-0.049 0.252-0.124 0.357-0.229 0-0 0-0 0-0l9.708-9.708 9.708 9.708c0 0 0 0 0 0 0.105 0.105 0.227 0.18 0.357 0.229 0.356 0.133 0.771 0.057 1.057-0.229l4.586-4.586c0.286-0.286 0.362-0.702 0.229-1.057-0.049-0.13-0.124-0.252-0.229-0.357z"></path>
+          </symbol>
+        </svg>
+      </div>
+      
+      <div class="c-global-nav__item">
+        <a class="c-link" href="/categories/development/">
+          test1
+        </a>
+      </div>
+      
+      <div class="c-global-nav__item">
+        <a class="c-link" href="/categories/golang/">
+          test2
+        </a>
+      </div>
+      
+    </nav>
+  </div>
+</div>
+
+    </div>
+  </div>
+</header>
+
+
+  <main class="c-main-content">
+    
+  <div class="p-single">
+    <div class="c-container">
+      <article class="c-post">
+        <header class="c-post__header">
+          <h1 class="c-post__title">Understand GLM -- Part1 Assumptions</h1>
+          <div class="c-post__header__meta">
+            <time class="c-pub-time" datetime=" 2019-04-18T00:00:00Z ">
+              2019.04.18
+            </time>
+            
+            <div class="c-tag">
+              
+              <a class="c-tag__item c-link" href="/tags/glm">GLM</a>
+              
+              <a class="c-tag__item c-link" href="/tags/r">R</a>
+              
+              <a class="c-tag__item c-link" href="/tags/regression">regression</a>
+              
+            </div>
+            
+          </div>
+          
+          <div class="c-thumb c-bg-img" style="background-image: url('/img/rainbow.jpg')"></div>
+          
+        </header>
+        <div class="c-post__body">
+          
+
+
+<p>This series of posts are inspired by my friends Mehrnaz and Anthi during a coffee chat.</p>
+<div id="the-goal-of-your-tech-related-blogs-should-look-like-this-format-httpr-statistics.coassumptions-of-linear-regression.html" class="section level4">
+<h4>The goal of your tech-related blogs should look like this format: <a href="http://r-statistics.co/Assumptions-of-Linear-Regression.html" class="uri">http://r-statistics.co/Assumptions-of-Linear-Regression.html</a></h4>
+<div id="the-first-post-will-take-you-back-to-the-basic-assumptions-about-linear-model-and-multicollinearity" class="section level5">
+<h5>The first post will take you back to the basic assumptions about linear model and multicollinearity</h5>
+</div>
+</div>
+<div id="update-on-8192019-too-much-theoretical-contents-you-need-some-examples-to-illustrate-your-points" class="section level4">
+<h4>Update on 8/19/2019: too much theoretical contents, you need some examples to illustrate your points…</h4>
+<div id="assumptions-of-linear-model" class="section level5">
+<h5>1. Assumptions of Linear Model:</h5>
+</div>
+<div id="first-thing-first-why-do-we-need-to-have-assumptions-we-dont-need-them-to-fit-least-sqaured-model-but-violating-the-assumptions-will-make-yourself-more-difficult-in-interpreting-the-regression-results-for-example-constructing-a-confidence-interval." class="section level5">
+<h5>First thing first: why do we need to have assumptions: we don’t need them to fit least sqaured model, but violating the assumptions will make yourself more difficult in interpreting the regression results, for example, constructing a confidence interval.</h5>
+<ul>
+<li>relationship between the independent and dependent variables should be linear. it is also important to check for outliers since linear regression is sensitive to outlier effect. The linearity assumption can be tested through scatter plots.
+<ul>
+<li><strong>Pay Attention</strong>: Y=a+(β1_X1)+(β2_X2^2) is also linear regression model, even X2 is raised to power 2. Linear in “parameters”.</li>
+</ul></li>
+<li>Independence of residuals error term. there is little or no autocorrelation in the data. Autocorrelation occurs when residuals are not independent from each other.
+<ul>
+<li>Difference between <strong>statistical error</strong> and <strong>residual</strong>: statistical error is the deviation of observed values from <em>TRUE</em> population mean which is unobservable; residual is the deviation of oberved values from <em>ESTIMATED</em> sample mean which could serve as a good estimator of the population mean. So the sum of residuals in a random sample is necessarily zero, and thus residuals are necessarily <em>not independen</em>; The statistical error, on the other hand, are independent, but their sum in a random sample is almost surely not zero.</li>
+<li>This distinction is important when it comes to calculate <strong>Mean Sqaured Error</strong>. The MSE is calculated from sum of squared residuals, not unbservable error. When we divide it by n, the number of observations, it’s MSE. But this is biased estimate of unobserved error. The bias is removed by dividing sum of squaured residuals by df=n-p-1 (n is the number of observations, p is number of parameters).</li>
+</ul></li>
+<li>Normality of residuals. requires all variables to be multivariate normal. This assumption can be best checked with Q-Q plot. Normality can be checked with a goodness of fit test: Kolmogorov-smirnov test. When data is not normally distributed a non-linear transformation (e.g. log, square, cubic) might fix the issue. (what is Q-Q plot: quantile-quantile, a point on the plot corresponds to one of the quantiles of the second distribution plotted against the same quantile of the first distribution. if the two distibutions being compared similar, the points in Q-Q plot will approximately lie on the line y=x)
+<ul>
+<li>try to understand Q-Q plot first:If the two distributions being compared are identical, the Q–Q plot follows the 45° line y = x. If the two distributions agree after linearly transforming the values in one of the distributions, then the Q–Q plot follows some line, but not necessarily the line y = x. If the general trend of the Q–Q plot is flatter than the line y = x, the distribution plotted on the horizontal axis is more dispersed than the distribution plotted on the vertical axis. Conversely, if the general trend of the Q–Q plot is steeper than the line y = x, the distribution plotted on the vertical axis is more dispersed than the distribution plotted on the horizontal axis.
+<ul>
+<li>dispersed: bigger standard deviation/variance, in other words, it’s fatter and longer <!--- ![dispersion](/Users/fanliu/Documents/Fan's Blog/public/img/dispersion.jpg)--></li>
+<li>get sample data here and plot Q-Q plot to understand “S” shaped Q-Q plot in R in R</li>
+</ul></li>
+</ul></li>
+</ul>
+<p>how to identify multicollinearity? VIF? variance inflation factor bad effects multicollinearity brings for the results how to fix it</p>
+</div>
+<div id="about-multicollinearity" class="section level5">
+<h5>2. About Multicollinearity:</h5>
+</div>
+<div id="two-things-i-learned-from-the-website-httpsnewonlinecourses.science.psu.edustat501node346" class="section level5">
+<h5>Two things I learned from the website: <a href="https://newonlinecourses.science.psu.edu/stat501/node/346/" class="uri">https://newonlinecourses.science.psu.edu/stat501/node/346/</a>:</h5>
+<ul>
+<li>When there are two highly-correlate variables A and B. The coefficients of putting them separately are definitely larger than the ones when you put them two together in the model, because the former one indicates when you increase A, B increases too, which increases the response more; but the latter means, when you fix the value of one of them, and you increase the other,then the response won’t increase that much as the first situation.</li>
+<li>About ESS: explained sum of squares. “The amazing thing is that even predictors that are not included in the model, but are highly correlated with the predictors in our model, can have an impact! … The moral of the story is that if you get estimated coefficients that just don’t make sense, there is probably a very good explanation. Rather than stopping your research and running off to report your unusual results, think long and hard about what might have caused the results. That is, think about the system you are studying and all of the extraneous variables that could influence the system.”
+<ul>
+<li>Example shown from this website: For example, consider a pharmaceutical company’s regression of territory sales on territory population and per capita income. One would, of course, expect that as the population of the territory increases, so would the sales in the territory. But, contrary to this expectation, the pharmaceutical company’s regression analysis deemed the estimated coefficient of territory population to be negative. That is, as the population of territory increases, the territory sales were predicted to decrease. After further investigation, the pharmaceutical company determined that the larger the territory, the larger too the competitor’s market penetration. That is, the competitor kept the sales down in territories with large populations.</li>
+<li><strong>Your own conclusion</strong>: that’s why business mindset and domain knowledge is important. Since you could have an idea to explain things that look weird from data results from the first sight</li>
+<li>it’s really helpful to refresh my understanding about RSS, ESS and TSS. TSS = RSS + ESS. Larger ESS, better the model fits. ESS measures how far regression line away from the average line. Intuitively, you can think if ESS too close to average line, then this model is useless, since you could just use average line to “predict” rather than build a regression model.
+<ol style="list-style-type: lower-roman">
+<li>Another interesing fact about R squre. R^2 is the ratio of ESS. When it’s just simple regression (with only one predictor), R^2 is equal to r^2. r is correlation value between Y and X. But this doesn’t work for multilinear regression, since correlation only measure the relationship between two variables.</li>
+</ol></li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="update-on-1052019-learned-from-jun" class="section level4">
+<h4>Update on 10/5/2019: learned from Jun</h4>
+<div id="glm-can-only-use-maximum-likelihood-but-linear-regression-can-use-both-maximum-likelihood-and-mean-square-error." class="section level5">
+<h5>GLM can only use maximum likelihood, but linear regression can use both maximum likelihood and mean square error.</h5>
+</div>
+</div>
+<div id="the-ultimate-goal-of-max-likelihood-is-to-find-an-optimal-way-to-find-the-distribution-of-the-data.-likelihood-is-you-know-the-data-first-and-then-find-its-corresponding-distribution.-likelihood-formula-is-distribution-formula-its-just-to-use-distribution-formula-and-multiplies-together-using-all-data-points.-how-to-get-maximum-likelihood-is-to-get-derivative.-for-example-maximum-likelihood-of-normal-distribution-take-log-first-since-it-has-exponential-in-it-before-taking-derivatives.-mle-is-the-short-name-for-maximum-likelihood." class="section level4">
+<h4>The ultimate goal of max likelihood is to find an optimal way to find the distribution of the data. Likelihood is you know the data first and then find its corresponding distribution. Likelihood formula IS distribution formula, it’s just to use distribution formula and multiplies together using all data points. How to get maximum likelihood is to get derivative. For example, maximum likelihood of normal distribution, take log first (since it has exponential in it) before taking derivatives. MLE is the short name for maximum likelihood.</h4>
+<div id="if-actual-observations-hence-errors-are-following-normal-distribution-around-the-mean-then-mle-ols-ols---minimize-error---maximize-likelihood---mle-from-the-formula" class="section level6">
+<h6>if actual observations (hence errors) are following normal distribution around the mean, then MLE = OLS (OLS -&gt; minimize error -&gt; maximize likelihood -&gt; MLE from the formula)</h6>
+</div>
+</div>
+<div id="how-to-derive-log-likelihood-formula" class="section level4">
+<h4>how to derive log likelihood formula</h4>
+<div id="variance-more-precisely-rss-residual-sum-of-square-and-deviance" class="section level5">
+<h5>‘variance’ (more precisely, RSS: residual sum of square) and deviance</h5>
+</div>
+<div id="deviance-this-expression-is-simply-2-times-the-log-likelihood-ratio-of-the-full-model-compared-to-the-reduced-model.-the-deviance-is-used-to-compare-two-models-in-particular-in-the-case-of-generalized-linear-models-glm-where-it-has-a-similar-role-to-residual-variance-from-anova-in-linear-models-rss." class="section level5">
+<h5>Deviance: This expression is simply 2 times the log-likelihood ratio of the full model compared to the reduced model. The deviance is used to compare two models – in particular in the case of generalized linear models (GLM) where it has a similar role to residual variance from ANOVA in linear models (RSS).</h5>
+</div>
+</div>
+
+        </div>
+
+        <footer class="c-post__footer">
+          <aside class="c-share">
+  <h2 class="c-share__title">Share</h2>
+  <div class="c-share__list">
+    <a class="c-share__list__item c-link" href="http://twitter.com/intent/tweet?text=Understand%20GLM%20--%20Part1%20Assumptions%20%7C%20Fan%20in%20Wonderland%20%2fpost%2funderstand-glm%2f" target="_blank">
+      <svg class="icon icon-twitter">
+        <use xlink:href="#icon-twitter"></use>
+        <symbol id="icon-twitter" viewBox="0 0 32 32">
+          <title>twitter</title>
+          <path d="M32 7.075c-1.175 0.525-2.444 0.875-3.769 1.031 1.356-0.813 2.394-2.1 2.887-3.631-1.269 0.75-2.675 1.3-4.169 1.594-1.2-1.275-2.906-2.069-4.794-2.069-3.625 0-6.563 2.938-6.563 6.563 0 0.512 0.056 1.012 0.169 1.494-5.456-0.275-10.294-2.888-13.531-6.862-0.563 0.969-0.887 2.1-0.887 3.3 0 2.275 1.156 4.287 2.919 5.463-1.075-0.031-2.087-0.331-2.975-0.819 0 0.025 0 0.056 0 0.081 0 3.181 2.263 5.838 5.269 6.437-0.55 0.15-1.131 0.231-1.731 0.231-0.425 0-0.831-0.044-1.237-0.119 0.838 2.606 3.263 4.506 6.131 4.563-2.25 1.762-5.075 2.813-8.156 2.813-0.531 0-1.050-0.031-1.569-0.094 2.913 1.869 6.362 2.95 10.069 2.95 12.075 0 18.681-10.006 18.681-18.681 0-0.287-0.006-0.569-0.019-0.85 1.281-0.919 2.394-2.075 3.275-3.394z"></path>
+        </symbol>
+      </svg>
+    </a>
+
+    <a class="c-share__list__item c-link" href="https://www.facebook.com/sharer/sharer.php?u=%2fpost%2funderstand-glm%2f" target="_blank">
+      <svg class="icon icon-facebook">
+        <use xlink:href="#icon-facebook"></use>
+        <symbol id="icon-facebook" viewBox="0 0 32 32">
+          <title>facebook</title>
+          <path d="M19 6h5v-6h-5c-3.86 0-7 3.14-7 7v3h-4v6h4v16h6v-16h5l1-6h-6v-3c0-0.542 0.458-1 1-1z"></path>
+        </symbol>
+      </svg>
+    </a>
+
+    <a class="c-share__list__item" href="http://getpocket.com/edit?url=%2fpost%2funderstand-glm%2f" target="_blank">
+      <svg class="icon icon-get-pocket">
+        <use xlink:href="#icon-get-pocket"></use>
+        <symbol id="icon-get-pocket" viewBox="0 0 27 28">
+          <title>get-pocket</title>
+          <path d="M24.453 2c1.359 0 2.422 1.094 2.422 2.438v8.109c0 7.484-5.984 13.453-13.422 13.453-7.469 0-13.453-5.969-13.453-13.453v-8.109c0-1.328 1.109-2.438 2.438-2.438h22.016zM13.453 18.625c0.469 0 0.938-0.187 1.281-0.516l6.312-6.062c0.359-0.344 0.578-0.828 0.578-1.328 0-1.016-0.828-1.844-1.844-1.844-0.484 0-0.938 0.187-1.281 0.516l-5.047 4.844-5.047-4.844c-0.344-0.328-0.797-0.516-1.266-0.516-1.016 0-1.844 0.828-1.844 1.844 0 0.5 0.203 0.984 0.562 1.328l6.328 6.062c0.328 0.328 0.797 0.516 1.266 0.516z"></path>
+        </symbol>
+      </svg>
+    </a>
+  </div>
+</aside>
+
+
+          <div class="c-pager">
+  <ul class="c-pager__list">
+    
+    <li class="c-pager__list__item c-pager__list__item--prev">
+      <a class="c-link" href="/post/workflow-for-my-daily-data-work/" data-toggle="tooltip" data-placement="top" title="Workflow for my daily data work">&larr; Previous Post</a>
+    </li>
+     
+    <li class="c-pager__list__item c-pager__list__item--next">
+      <a class="c-link" href="/post/understand-glm-part2-interaction/" data-toggle="tooltip" data-placement="top" title="Understand GLM -- Part2 Interaction">Next Post &rarr;</a>
+    </li>
+    
+  </ul>
+</div>
+
+
+          
+
+<nav class="related-articles js-related-articles">
+  <h2 class="related-articles__headline">Related Contents</h2>
+  <ul class="related-articles__links">
+    
+    <li class="related-articles__links__item js-items">
+      <article class="related-article">
+        <p class="related-article__stock">2015.07.23.</p>
+        <p class="related-article__title">
+          <a class="related-article__link" href="/post/2015-07-23-r-rmarkdown/">Hello R Markdown</a>
+        </p>
+        <p class="related-article__tags">
+          
+          <span class="related-article__tags__item">
+            R Markdown
+          </span>
+          
+          <span class="related-article__tags__item">
+            plot
+          </span>
+          
+          <span class="related-article__tags__item">
+            regression
+          </span>
+           </p>
+      </article>
+    </li>
+    
+  </ul>
+</nav>
+
+
+        </footer>
+        <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "NewsArticle",
+  "mainEntityOfPage": {
+    "@type": "NewsArticle",
+    "@id": "/post/understand-glm/",
+    "headline": "&lt;p&gt;This series of posts are inspired by my friends Mehrnaz and Anthi during a coffee chat.&lt;/p&gt;&lt;div id=&#34;the-goa",
+    "author": "Fan Liu",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Fan Liu",
+      "logo": "//image/logo.png",
+    },
+    "image": "/img/rainbow.jpg",
+    "datePublished": "2019-04-18"
+  },
+  "headline": "&lt;p&gt;This series of posts are inspired by my friends Mehrnaz and Anthi during a coffee chat.&lt;/p&gt;&lt;div id=&#34;the-goa",
+  "alternativeHeadline": "Fan in Wonderland",
+  "datePublished": "2019-04-18",
+  "dateModified": "2019-04-18",
+  "url": "/post/understand-glm/",
+  "wordCount": "1247",
+  "author": {
+    "@type": "Person",
+    "name": "Fan Liu"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Fan Liu"
+  },
+  "image": "",
+  "genre": "GLMR",
+  "keywords": "GLMRregression",
+  "description": "This is series of blogs about me trying to understand GLM inside and out"
+}
+</script>
+
+      </article>
+    </div>
+  </div>
+
+  </main>
+
+  <footer class="c-global-footer">
+  <div class="c-container c-container--medium">
+    <nav class="c-footer-nav">
+      
+      <a class="c-footer-nav-item" href="/page/about/">
+        About
+      </a>
+      
+      <a class="c-footer-nav-item" href="https://github.com/fananan">
+        GitHub
+      </a>
+      
+      <a class="c-footer-nav-item" href="https://twitter.com/fanananliu">
+        Twitter
+      </a>
+      
+    </nav>
+    <p class="c-copy"><small>all copyright of content is reserved by Fan</small></p>
+  </div>
+</footer>
+
+
+  <script src="/js/application.js"></script>
+</body>
+</html>

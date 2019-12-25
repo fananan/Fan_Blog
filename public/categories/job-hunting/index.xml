@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Job Hunting on Fan in Wonderland</title>
+    <link>/categories/job-hunting/</link>
+    <description>Recent content in Job Hunting on Fan in Wonderland</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>all copyright of content is reserved by Fan</copyright>
+    <lastBuildDate>Tue, 07 May 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/categories/job-hunting/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Preparation for Next Opportunity</title>
+      <link>/post/preparation-for-next-opportunity/</link>
+      <pubDate>Tue, 07 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/preparation-for-next-opportunity/</guid>
+      <description> I NEED TO/HAVE TO LEAVE THIS TEAM. I DON’T WANT TO STAY HERE ANY MORE: petty coworkers, boring projects and manager with bad attitude TIMELINE May - June: two months to hone/document your basic knowledge on GLM/R coding/AB testing/working experiences. (and publish your blog)  July - Sep: learn through interview questions online or start applying small companies for practice  Sep - Oct: start looking for jobs/applying    </description>
+    </item>
+    
+  </channel>
+</rss>
