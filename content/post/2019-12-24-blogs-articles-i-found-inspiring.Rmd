@@ -9,3 +9,5 @@ data: '2019-12-24T23:12:21-05:00'
 description: ''
 image: 'img/fall-autumn-red-season.jpg'
 ---
+##### Amazing Blogs on Statistical Modeling
+["Statistical Forecasting: notes on regression and time series analysis from Duke University"](<http://people.duke.edu/~rnau/testing.htm>)

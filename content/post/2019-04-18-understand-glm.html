@@ -18,6 +18,55 @@ image: 'img/rainbow.jpg'
 
 
 <p>This series of posts are inspired by my friends Mehrnaz and Anthi during a coffee chat.</p>
+<div id="quick-overview-of-comparing-defining-features-between-glm-and-linear-regression-reference" class="section level5">
+<h5>Quick Overview of Comparing Defining Features between GLM and Linear regression (<a href="https://www.theanalysisfactor.com/confusing-statistical-term-7-glm/">reference</a>):</h5>
+<ul>
+<li>Linear Regression (ANOVA, ANCOVA…)
+<ol style="list-style-type: decimal">
+<li>Residuals of dependent variable are normally distributed</li>
+<li>All coefficient estimates, means, residual variance are calculated by OLS (ordinary least squares). (This feature is important since some statistics are derived from OLS: R-squared, MSE)</li>
+</ol></li>
+<li>Generalized Linear Model
+<ol style="list-style-type: decimal">
+<li>Residuals of dependent variable are not necessarily normally distributed. Their distributions are from exponential family</li>
+<li>Dependent variable is linear with predictors only through a link function</li>
+<li>All coefficient estimates, means, residual variance are calculated through MLE, not OLS</li>
+</ol></li>
+</ul>
+</div>
+<div id="first-and-foremost-be-clear-about-linear-regression-assumptions" class="section level5">
+<h5>First and Foremost, be clear about Linear Regression assumptions:</h5>
+<p><a href="https://www.theanalysisfactor.com/the-distribution-of-dependent-variables/">SML</a>: the assumptions of normality and homogeneity (to validate the statistical properties of any one part of an overall dataset are the same as any other part) are not about Y, the dependent variable, but about residual errors, which represent variation in which is not explained by the predictors.</p>
+<p>Assumptions are checked after you creating a model…</p>
+<ul>
+<li>Explicit Assumptions (inferential procedures for linear regression are typically based on a normality distribution for the residuals):
+<ol style="list-style-type: decimal">
+<li>The errors are independent</li>
+<li>The errors are normally distributed</li>
+<li>The errors have constant variance, which means their variance does not change across different levels of the predictors.</li>
+<li>The errors are sumed to zero</li>
+<li>Linearity and additivity of the relationship between dependent and independent variables: the expected value of dependent variable is a straight-line function of EACH independent variable, holding the others fixed; the slope of that line does not depend on the values of other variables; the effects of different independent variables on the expected values of the dependent variables are additive (residuals are the estimates of errors) These five are enough for most linear regression analysis.</li>
+</ol></li>
+</ul>
+<p>! Be aware that as sample size increases, the normality of residuals is not needed. You can use Bootstrap to estimate coefficients; but if the residuals do not satisfying constant variance assuption, standard errors and confidence intervals will be adversely affected, no matter how big the sample size it.</p>
+<p>How to diagnose those assumptions and fix it: (<a href="http://people.duke.edu/~rnau/testing.htm">reference</a>)</p>
+<ul>
+<li><p>“Residuals vs. Fitted: Nonlinearity is usually most evident in a plot of observed versus predicted values or a plot of residuals versus predicted/fitted values. (Solution: nonlinear transformation to the dependent varaible or/and independent variables. See details in the reference.)</p></li>
+<li><p>“Normal Q-Q”: check for normality.This is the plot of the fractiles of error distribution versus the fractiles of a normal distribution by having the same mean and varaince.</p></li>
+<li><p>Violation of independence can be diagnosed by looking at residuals versus independent variables. The residuals should be randomly and symmetrically distributed around zero under all conditions.</p></li>
+<li><p>To check homoscedasticity: plot residuals versus predicted/fittd values</p></li>
+</ul>
+</div>
+<div id="major-differences-between-glm-and-lm" class="section level5">
+<h5>Major differences between GLM and LM</h5>
+<ul>
+<li>GLM relaxes normality</li>
+<li>GLM allows for non-uniform variance (variance functions)</li>
+<li>GLM doesn’t assume direct linear relationship between response variable and predictors</li>
+<li>GLM uses MLE to estimate parameters</li>
+</ul>
+<p><a href="https://www.guru99.com/r-generalized-linear-model.html">a practical procedure of building GLM</a></p>
+</div>
 <div id="the-goal-of-your-tech-related-blogs-should-look-like-this-format-httpr-statistics.coassumptions-of-linear-regression.html" class="section level4">
 <h4>The goal of your tech-related blogs should look like this format: <a href="http://r-statistics.co/Assumptions-of-Linear-Regression.html" class="uri">http://r-statistics.co/Assumptions-of-Linear-Regression.html</a></h4>
 <div id="the-first-post-will-take-you-back-to-the-basic-assumptions-about-linear-model-and-multicollinearity" class="section level5">
@@ -79,8 +128,8 @@ image: 'img/rainbow.jpg'
 </div>
 <div id="the-ultimate-goal-of-max-likelihood-is-to-find-an-optimal-way-to-find-the-distribution-of-the-data.-likelihood-is-you-know-the-data-first-and-then-find-its-corresponding-distribution.-likelihood-formula-is-distribution-formula-its-just-to-use-distribution-formula-and-multiplies-together-using-all-data-points.-how-to-get-maximum-likelihood-is-to-get-derivative.-for-example-maximum-likelihood-of-normal-distribution-take-log-first-since-it-has-exponential-in-it-before-taking-derivatives.-mle-is-the-short-name-for-maximum-likelihood." class="section level4">
 <h4>The ultimate goal of max likelihood is to find an optimal way to find the distribution of the data. Likelihood is you know the data first and then find its corresponding distribution. Likelihood formula IS distribution formula, it’s just to use distribution formula and multiplies together using all data points. How to get maximum likelihood is to get derivative. For example, maximum likelihood of normal distribution, take log first (since it has exponential in it) before taking derivatives. MLE is the short name for maximum likelihood.</h4>
-<div id="if-actual-observations-hence-errors-are-following-normal-distribution-around-the-mean-then-mle-ols-ols---minimize-error---maximize-likelihood---mle-from-the-formula" class="section level6">
-<h6>if actual observations (hence errors) are following normal distribution around the mean, then MLE = OLS (OLS -&gt; minimize error -&gt; maximize likelihood -&gt; MLE from the formula)</h6>
+<div id="if-errors-are-following-normal-distribution-around-the-mean-then-mle-ols-ols---minimize-error---maximize-likelihood---mle-from-the-formula" class="section level6">
+<h6>if errors are following normal distribution around the mean, then MLE = OLS (OLS -&gt; minimize error -&gt; maximize likelihood -&gt; MLE from the formula)</h6>
 </div>
 </div>
 <div id="how-to-derive-log-likelihood-formula" class="section level4">

@@ -18,7 +18,8 @@
       <pubDate>Tue, 24 Dec 2019 00:00:00 +0000</pubDate>
       
       <guid>/post/blogs-articles-i-found-inspiring/</guid>
-      <description></description>
+      <description> Amazing Blogs on Statistical Modeling “Statistical Forecasting: notes on regression and time series analysis from Duke University”
+ </description>
     </item>
     
     <item>
@@ -27,7 +28,7 @@
       <pubDate>Sun, 22 Dec 2019 00:00:00 +0000</pubDate>
       
       <guid>/post/curiosity-on-data/</guid>
-      <description></description>
+      <description> Gradually realized, insurance data is really unique and interesting.  this post can start with knowing more about insurance data  </description>
     </item>
     
     <item>
@@ -79,7 +80,7 @@ How to create a new repo for an existing project 1. Go to the directory that con
       
       <guid>/post/understand-glm/</guid>
       <description>This series of posts are inspired by my friends Mehrnaz and Anthi during a coffee chat.
-The goal of your tech-related blogs should look like this format: http://r-statistics.co/Assumptions-of-Linear-Regression.html The first post will take you back to the basic assumptions about linear model and multicollinearity   Update on 8/19/2019: too much theoretical contents, you need some examples to illustrate your points… 1. Assumptions of Linear Model:  First thing first: why do we need to have assumptions: we don’t need them to fit least sqaured model, but violating the assumptions will make yourself more difficult in interpreting the regression results, for example, constructing a confidence interval.</description>
+Quick Overview of Comparing Defining Features between GLM and Linear regression (reference):  Linear Regression (ANOVA, ANCOVA…) Residuals of dependent variable are normally distributed All coefficient estimates, means, residual variance are calculated by OLS (ordinary least squares). (This feature is important since some statistics are derived from OLS: R-squared, MSE)  Generalized Linear Model Residuals of dependent variable are not necessarily normally distributed.</description>
     </item>
     
     <item>
@@ -98,7 +99,7 @@ before presenting to others, take a short coffee break and come back to check th
       <pubDate>Thu, 07 Feb 2019 00:00:00 +0000</pubDate>
       
       <guid>/post/how-did-i-get-here/</guid>
-      <description>The simple workflow to get started with Blogdown I always want to start my own blog. I tried Medium because I really liked their simple neat interface, but the only thing it lacks of is the function to let me embed code in my article. Later I found blogdown and got excited to use it, but I almost gave up because I encounted few trivial problems. So I would like to share what I learned through this process to share my workflow based on the resources I searched along the way.</description>
+      <description></description>
     </item>
     
     <item>

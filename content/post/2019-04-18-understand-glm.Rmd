@@ -17,6 +17,51 @@ image: 'img/rainbow.jpg'
 
 This series of posts are inspired by my friends Mehrnaz and Anthi during a coffee chat.
 
+##### Quick Overview of Comparing Defining Features between GLM and Linear regression ([reference](<https://www.theanalysisfactor.com/confusing-statistical-term-7-glm/>)):
+* Linear Regression (ANOVA, ANCOVA...)
+    1. Residuals of dependent variable are normally distributed
+    2. All coefficient estimates, means, residual variance are               calculated by OLS (ordinary least squares). (This feature is          important since some statistics are derived from OLS:                 R-squared, MSE)
+* Generalized Linear Model
+    1. Residuals of dependent variable are not necessarily normally          distributed. Their distributions are from exponential family
+    2. Dependent variable is linear with predictors only through a           link function
+    3. All coefficient estimates, means, residual variance are               calculated through MLE, not OLS
+
+##### First and Foremost, be clear about Linear Regression assumptions:
+[SML](<https://www.theanalysisfactor.com/the-distribution-of-dependent-variables/>): the assumptions of normality and homogeneity (to validate the statistical properties of any one part of an overall dataset are the same as any other part) are not about Y, the dependent variable, but about residual errors, which represent variation in which is not explained by the predictors.
+
+Assumptions are checked after you creating a model...
+
+* Explicit Assumptions (inferential procedures for linear regression are typically based on a normality distribution for the residuals):
+    1. The errors are independent
+    2. The errors are normally distributed
+    3. The errors have constant variance, which means their variance does not change across different levels of the predictors.
+    4. The errors are sumed to zero 
+    5. Linearity and additivity of the relationship between dependent and independent variables: the expected value of dependent variable is a straight-line function of EACH independent variable, holding the others fixed; the slope of that line does not depend on the values of other variables; the effects of different independent variables on the expected values of the dependent variables are additive
+     (residuals are the estimates of errors)
+These five are enough for most linear regression analysis.
+
+! Be aware that as sample size increases, the normality of residuals is not needed. You can use Bootstrap to estimate coefficients; but if the residuals do not satisfying constant variance assuption, standard errors and confidence intervals will be adversely affected, no matter how big the sample size it. 
+
+How to diagnose those assumptions and fix it:
+([reference](<http://people.duke.edu/~rnau/testing.htm>))
+
+* "Residuals vs. Fitted: Nonlinearity is usually most evident in a plot of observed versus predicted values or a plot of residuals versus predicted/fitted values. (Solution: nonlinear transformation to the dependent varaible or/and independent variables. See details in the reference.)
+
+* "Normal Q-Q": check for normality.This is the plot of the fractiles of error distribution versus the fractiles of a normal distribution by having the same mean and varaince. 
+   
+* Violation of independence can be diagnosed by looking at residuals versus independent variables. The residuals should be randomly and symmetrically distributed around zero under all conditions. 
+
+* To check homoscedasticity: plot residuals versus predicted/fittd values
+
+##### Major differences between GLM and LM
+* GLM relaxes normality
+* GLM allows for non-uniform variance (variance functions)
+* GLM doesn't assume direct linear relationship between response variable and predictors
+* GLM uses MLE to estimate parameters 
+
+
+[a practical procedure of building GLM](<https://www.guru99.com/r-generalized-linear-model.html>)
+
 #### The goal of your tech-related blogs should look like this format: <http://r-statistics.co/Assumptions-of-Linear-Regression.html>
 
 ##### The first post will take you back to the basic assumptions about linear model and multicollinearity
@@ -57,7 +102,7 @@ how to fix it
 ##### GLM can only use maximum likelihood, but linear regression can use both maximum likelihood and mean square error.
 #### The ultimate goal of max likelihood is to find an optimal way to find the distribution of the data. Likelihood is you know the data first and then find its corresponding distribution. Likelihood formula IS distribution formula, it's just to use distribution formula and multiplies together using all data points. How to get maximum likelihood is to get derivative. For example, maximum likelihood of normal distribution, take log first (since it has exponential in it) before taking derivatives. MLE is the short name for maximum likelihood.    
 
-###### if actual observations (hence errors) are following normal distribution around the mean, then MLE = OLS (OLS -> minimize error -> maximize likelihood -> MLE from the formula)
+###### if errors are following normal distribution around the mean, then MLE = OLS (OLS -> minimize error -> maximize likelihood -> MLE from the formula)
 
 #### how to derive log likelihood formula 
 
